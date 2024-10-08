@@ -1,7 +1,7 @@
 /* Apply a gradient background to the body */
 body {
     background: rgb(0,0,0);
-    background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, rgba(253,187,45,1) 100%);
+    background: radial-gradient(circle, rgb(187, 76, 102) 0%, rgb(7, 1, 9) 100%);
     font-family: Arial, sans-serif;
     text-align: center;
     margin-top: 50px;
@@ -9,7 +9,8 @@ body {
   
   /* Styling for the to-do list container */
   #todo-container {
-    background: rgb(41, 33, 33);
+    background-image: url(images/sunset-with-coyote.jpg);
+    background-size: contain;
     width: 400px;
     margin: 0 auto;
     border: 2px solid #0033ff;
