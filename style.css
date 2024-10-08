@@ -2,7 +2,7 @@
 body {
     background: rgb(0,0,0);
     background: radial-gradient(circle, rgb(187, 76, 102) 0%, rgb(7, 1, 9) 100%);
-    font-family: Arial, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
     text-align: center;
     margin-top: 50px;
   }
@@ -77,7 +77,7 @@ body {
   /* Styling for the Edit and Delete buttons */
   .edit-btn, .delete-btn {
     float: right;
-    color: crimson;
+    color: rgb(255, 255, 255);
     cursor: pointer;
     margin: 3px 5px;
     border: none;
