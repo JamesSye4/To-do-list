@@ -27,5 +27,67 @@ body {
   
   /* Styling for the H1 header */
   h1 {
-    margin-bottom:
+    margin-bottom: 20px; 
+  }
+  
+  /* Styling for the input box */
+  #input-box {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-size: 20px;
+  }
+  
+  /* Styling for the Add button */
+  #input-button {
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.4s;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2e60ea;
+  }
+  
+  /* Change the background color of the Add button on hover */
+  #input-button:hover {
+    background-color: #9eb7fd; 
+  }
+  
+  /* Remove bullet points and style unordered list for tasks */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  /* Styling each task item in the list */
+  li {
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  /* Styling for the Edit and Delete buttons */
+  .edit-btn, .delete-btn {
+    float: right;
+    color: crimson;
+    cursor: pointer;
+    margin: 3px 5px;
+    border: none;
+    padding: 3px 5px;
+    background: none;
+  }
+  
+  /* Styling for completed tasks */
+  .completed {
+    text-decoration: line-through;
+    color: gray;
+    border: 1px solid gray;
+  }
   

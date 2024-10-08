@@ -6,27 +6,89 @@ const uncompletedCounter = document.getElementById("uncompleted-counter");
 
 // Function to add a task
 function addTask() {
-  // Get the value of the task and trim whitespace
-  const task = inputBox.value.trim();
-  if (!task) {
-    alert("Please write down a task");
-    return;
-  }
+    console.log("Add button clicked!"); // Debugging: Check if addTask is called
 
-  // Create a new list item (li)
-  const li = document.createElement("li");
-  li.innerHTML = `
-    <label>
-      <input type="checkbox" class="task-checkbox">
-      <span>${task}</span>
-    </label>
-    <button class="edit-btn">Edit</button>
-    <button class="delete-btn">Delete</button>
-  `;
+    const task = inputBox.value.trim(); // Get and trim input value
+    if (!task) {
+        alert("Please write down a task");
+        return;
+    }
 
-  // Append the new list item to the list container
-  listContainer.appendChild(li);
+    // Create list item (li) with task and controls
+    const li = document.createElement("li");
+    li.innerHTML = `
+        <label>
+            <input type="checkbox" class="task-checkbox">
+            <span>${task}</span>
+        </label>
+        <button class="edit-btn">Edit</button>
+        <button class="delete-btn">Delete</button>
+    `;
 
-  // Clear the input field after adding the task
-  inputBox.valu
+    // Append the new task to the list
+    listContainer.appendChild(li);
+    inputBox.value = ""; // Clear input field
 
+    // Add event listeners for the new task
+    addTaskEventListeners(li);
+
+    // Update the task counters after adding a new task
+    updateCounters();
+}
+
+// Function to add event listeners to a task item
+function addTaskEventListeners(taskItem) {
+    const checkbox = taskItem.querySelector(".task-checkbox");
+    const editBtn = taskItem.querySelector(".edit-btn");
+    const deleteBtn = taskItem.querySelector(".delete-btn");
+    const taskSpan = taskItem.querySelector("label span");
+
+    // Checkbox listener for marking a task as completed
+    checkbox.addEventListener("click", () => {
+        console.log("Checkbox clicked!"); // Debugging: Check if checkbox is clicked
+        taskItem.classList.toggle("completed", checkbox.checked);
+        updateCounters();
+    });
+
+    // Edit button listener for editing a task
+    editBtn.addEventListener("click", () => {
+        console.log("Edit button clicked!"); // Debugging: Check if edit button is clicked
+        const updatedTask = prompt("Edit task:", taskSpan.textContent);
+        if (updatedTask !== null && updatedTask.trim() !== "") {
+            taskSpan.textContent = updatedTask.trim();
+            taskItem.classList.remove("completed");
+            checkbox.checked = false;
+            updateCounters();
+        }
+    });
+
+    // Delete button listener for removing a task
+    deleteBtn.addEventListener("click", () => {
+        console.log("Delete button clicked!"); // Debugging: Check if delete button is clicked
+        if (confirm("Are you sure you want to delete this task?")) {
+            taskItem.remove();
+            updateCounters();
+        }
+    });
+}
+
+// Function to update the completed and uncompleted task counters
+function updateCounters() {
+    const completedTasks = document.querySelectorAll("li.completed").length;
+    const totalTasks = document.querySelectorAll("#list-container li").length;
+    const uncompletedTasks = totalTasks - completedTasks;
+
+    console.log(`Completed: ${completedTasks}, Uncompleted: ${uncompletedTasks}`); // Debugging: Check task counters
+    completedCounter.textContent = completedTasks;
+    uncompletedCounter.textContent = uncompletedTasks;
+}
+
+// Attach the addTask function to the button click
+document.getElementById('input-button').addEventListener('click', addTask);
+
+// Optional: Allow pressing "Enter" key to add a task
+inputBox.addEventListener('keypress', function (event) {
+    if (event.key === "Enter") {
+        addTask();
+    }
+});
