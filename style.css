@@ -1,99 +1,31 @@
-
-  *,
-  *:before,
-  *:after{
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-  }
-  body{
-      height: 100vh;
-      background: #066acd;
-  }
-  .container{
-      width: 40%;
-      top: 50%;
-      left: 50%;
-      background: white;
-      border-radius: 10px;
-      min-width: 450px;
-      position: absolute;
-      min-height: 100px;
-      transform: translate(-50%,-50%);
-  }
-  #newtask{
-      position: relative;
-      padding: 30px 20px;
-  }
-  #newtask input{
-      width: 75%;
-      height: 45px;
-      padding: 12px;
-      color: #111111;
-      font-weight: 500;
-      position: relative;
-      border-radius: 5px;
-      font-family: 'Poppins',sans-serif;
-      font-size: 15px;
-      border: 2px solid #d1d3d4;
+/* Apply a gradient background to the body */
+body {
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, rgba(253,187,45,1) 100%);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
   }
   
-  #newtask input:focus{
-      outline: none;
-      border-color: #0d75ec;
-  }
-  #newtask button{
-      position: relative;
-      float: right;
-      font-weight: 500;
-      font-size: 16px;
-      background-color: #0d75ec;
-      border: none;
-      color: #ffffff;
-      cursor: pointer;
-      outline: none;
-      width: 20%;
-      height: 45px;
-      border-radius: 5px;
-      font-family: 'Poppins',sans-serif;
-  }
-  #tasks{
-      border-radius: 10px;
-      width: 100%;
-      position: relative;
-      background-color: #ffffff;
-      padding: 30px 20px;
-      margin-top: 10px;
+  /* Styling for the to-do list container */
+  #todo-container {
+    background: rgb(41, 33, 33);
+    width: 400px;
+    margin: 0 auto;
+    border: 2px solid #0033ff;
+    padding: 20px;
+    color: white;
+    border-radius: 15px;
   }
   
-  .task{
-      border-radius: 5px;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid #939697;
-      cursor: pointer;
-      background-color: #c5e1e6;
-      height: 50px;
-      margin-bottom: 8px;
-      padding: 5px 10px;
-      display: flex;
+  /* Styling for the header inside the container */
+  #header {
+    margin: 5px;
+    font-size: 20px;
+    text-align: center;
   }
-  .task span{
-      font-family: 'Poppins',sans-serif;
-      font-size: 15px;
-      font-weight: 400;
-  }
-  .task button{
-      background-color: #6583e5;
-      color: #ffffff;
-      border: none;
-      cursor: pointer;
-      outline: none;
-      height: 100%;
-      width: 40px;
-      border-radius: 5px;
-  }
-
-  h1 { 
-    color: purple;
-  }
+  
+  /* Styling for the H1 header */
+  h1 {
+    margin-bottom:
+  
