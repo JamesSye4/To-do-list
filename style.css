@@ -91,4 +91,29 @@ body {
     color: gray;
     border: 1px solid gray;
   }
+   /* Styling for the archived tasks section to match the to-do list theme */
+#archived-list-container {
+    background-image: url(images/sunset-with-coyote.jpg);
+    width: 400px;
+    margin: 20px auto;
+    border: 2px solid #0033ff;
+    padding: 15px;
+    color: white;
+    border-radius: 15px;
+  }
   
+
+
+  #archived-list-container h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  #archived-list-container li {
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    margin-top: 10px;
+  }

@@ -1,6 +1,7 @@
 // Select necessary elements from the DOM
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
+const archivedListContainer = document.getElementById("archived-list-container");
 const completedCounter = document.getElementById("completed-counter");
 const uncompletedCounter = document.getElementById("uncompleted-counter");
 
@@ -46,7 +47,11 @@ function addTaskEventListeners(taskItem) {
     // Checkbox listener for marking a task as completed
     checkbox.addEventListener("click", () => {
         console.log("Checkbox clicked!"); // Debugging: Check if checkbox is clicked
-        taskItem.classList.toggle("completed", checkbox.checked);
+        if (checkbox.checked) {
+            archiveTask(taskItem); // Move to archive if checked
+        } else {
+            unarchiveTask(taskItem); // Move back to task list if unchecked
+        }
         updateCounters();
     });
 
@@ -56,8 +61,12 @@ function addTaskEventListeners(taskItem) {
         const updatedTask = prompt("Edit task:", taskSpan.textContent);
         if (updatedTask !== null && updatedTask.trim() !== "") {
             taskSpan.textContent = updatedTask.trim();
-            taskItem.classList.remove("completed");
-            checkbox.checked = false;
+            if (taskItem.parentElement === archivedListContainer) {
+                taskItem.classList.remove("completed");
+                checkbox.checked = false;
+                archivedListContainer.removeChild(taskItem);
+                listContainer.appendChild(taskItem);
+            }
             updateCounters();
         }
     });
@@ -72,10 +81,22 @@ function addTaskEventListeners(taskItem) {
     });
 }
 
+// Function to move task to the archived section
+function archiveTask(taskItem) {
+    taskItem.classList.add("completed");
+    archivedListContainer.appendChild(taskItem);
+}
+
+// Function to move task back to the task list from the archive
+function unarchiveTask(taskItem) {
+    taskItem.classList.remove("completed");
+    listContainer.appendChild(taskItem);
+}
+
 // Function to update the completed and uncompleted task counters
 function updateCounters() {
-    const completedTasks = document.querySelectorAll("li.completed").length;
-    const totalTasks = document.querySelectorAll("#list-container li").length;
+    const completedTasks = archivedListContainer.querySelectorAll("li").length;
+    const totalTasks = listContainer.querySelectorAll("li").length + completedTasks;
     const uncompletedTasks = totalTasks - completedTasks;
 
     console.log(`Completed: ${completedTasks}, Uncompleted: ${uncompletedTasks}`); // Debugging: Check task counters
@@ -84,11 +105,16 @@ function updateCounters() {
 }
 
 // Attach the addTask function to the button click
-document.getElementById('input-button').addEventListener('click', addTask);
+document.getElementById('input-button').addEventListener('click', function () {
+    console.log("Add button event listener triggered!"); // Debugging
+    addTask();
+});
 
 // Optional: Allow pressing "Enter" key to add a task
 inputBox.addEventListener('keypress', function (event) {
     if (event.key === "Enter") {
+        console.log("Enter key pressed!");
         addTask();
     }
 });
+
